@@ -10,12 +10,12 @@ router.post("/AddTime",(req, res) => {
     s += `'${Entering}')`;
 
     db_pool.query(s, function(err){
-            if (err){
-                res.status(500).json({message: err}); }
-            else{
-                res.status(200).json({message: "good"});}
-        })
-    });
+        if (err){
+            res.status(500).json({message: err}); }
+        else{
+            res.status(200).json({message: "good"});}
+    })
+});
 
 // // Read Addpoint
 // router.get("/List",(req, res) => {
