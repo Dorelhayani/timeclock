@@ -3,7 +3,7 @@ const router = express.Router()
 module.exports = router;
 
 // Create Addpoint
-router.post("/Add",(req, res) => {
+router.post("/AddEmployee",(req, res) => {
     let name=req.body.name;
     let q=`INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')` ;
     db_pool.query(q, function(err, rows){

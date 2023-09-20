@@ -17,17 +17,17 @@ app.use(express.static(path.join(__dirname, "js")));
 let db_M = require('./database');
 global.db_pool = db_M.pool;
 
-// BE Categories Table
-const cat_rtr=require('./routes/Cat_R')
-app.use('/Categories', cat_rtr);
+// BE Employees Table
+const Employees_rtr=require('./Routs/Employee_Crud')
+app.use('/employees', Employees_rtr);
 
-// BE Task Table
-const task_rtr=require('./routes/Task_R')
-app.use('/Task', task_rtr);
+// BE TimeReport Table
+const Time_rtr=require('./Routs/Timereport _Crud')
+app.use('/timereport', Time_rtr);
 
 // Category FE
-const fe_rtr = require('./routes/FE_R');
-app.use('/FE', fe_rtr);
+// const fe_rtr = require('./Routs/FE_R');
+// app.use('/FE', fe_rtr);
 
 
 
