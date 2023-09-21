@@ -18,7 +18,7 @@ router.get("/List",(req, res) => {
         else {  res.status(200).json(rows );  }    });    });
 
 // Update Addpoint
-router.patch("/Update/:row_id",(req, res) => {
+router.patch("/Update",(req, res) => {
     let id=req.params.id;
 
     let q=`UPDATE \`employees\`  SET \`name\`='${name}' WHERE id=${id} `;
@@ -28,7 +28,7 @@ router.patch("/Update/:row_id",(req, res) => {
         else{  res.status(200).json({message: "OK"});  }    });    });
 
 // Delete Addpoint
-router.delete("/Delete/:row_id",(req, res) => {
+router.delete("/Delete",(req, res) => {
     let id=req.params.id;
 
     let q=`DELETE FROM \`employees\` WHERE id='${id}' `;

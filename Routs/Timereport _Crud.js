@@ -17,13 +17,13 @@ router.post("/AddTime",(req, res) => {
     })
 });
 
-// // Read Addpoint
-// router.get("/List",(req, res) => {
-//     let q="SELECT * FROM ` timereport` ";
-//     db_pool.query(q, function(err, rows){
-//         if(err)  {  res.status(500).json({message: err})  }
-//         else {  res.status(200).json(rows );  }    });    });
-//
+// Read Addpoint
+router.get("/List",(req, res) => {
+    let q="SELECT * FROM ` timereport` ";
+    db_pool.query(q, function(err, rows){
+        if(err)  {  res.status(500).json({message: err})  }
+        else {  res.status(200).json(rows );  }    });    });
+
 
 // Update Addpoint
 router.patch("/UpdateTime",(req, res) => {
