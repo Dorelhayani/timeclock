@@ -35,7 +35,7 @@ router.patch("/UpdateTime",(req, res) => {
 
     let s =`UPDATE \`timereport\`  SET \`Leaving\`='${Leaving}' WHERE id=${id} `;
 
-    db_pool.query(s, function(err, rows){
+    db_pool.query(s, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
 
