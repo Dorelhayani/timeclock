@@ -24,26 +24,31 @@ router.get("/List",(req, res) => {
         if(err)  {  res.status(500).json({message: err})  }
         else {  res.status(200).json(rows );  }    });    });
 
-// Update Addpoint
-router.patch("/UpdateTime",(req, res) => {
-    // let id=req.body.id;
-    // let Leaving=req.body.Leaving;
-
-    let {id, Entering, Leaving} = req.body;
-
-    // let s =`UPDATE \`timereport\`  SET \`Leaving\`='${Leaving}' WHERE id=${id} `;
-    let Q =`UPDATE \`timereport\`  SET \`Leaving\`='${Leaving}' WHERE id=${id} `;
-
+// Update Entering Addpoint
+router.patch("/Clockin",(req, res) => {
+    let id=req.body.id;
+    let Entering=req.body.Entering;
+    let Q =`UPDATE \`timereport\`  SET \`Entering\`='${Entering}' WHERE id=${id} `;
     db_pool.query(Q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
+
+// Update Leaving Addpoint
+router.patch("/Clockout",(req, res) => {
+    let id=req.body.id;
+    let Leaving=req.body.Leaving;
+    let Q =`UPDATE \`timereport\`  SET \`Leaving\`='${Leaving}' WHERE id=${id} `;
+    db_pool.query(Q, function(err){
+        if(err){ res.status(500).json({message: err}) }
+        else{  res.status(200).json({message: "OK"});  }    });    });
+
 
 // Delete Addpoint
 router.delete("/Delete/:row_id",(req, res) => {
     let id=req.params.row_id;
     let q=`DELETE FROM \`timereport\` WHERE id='${id}' `;
 
-    db_pool.query(q, function(err, rows ){
+    db_pool.query(q, function(err){
 
         if(err){  res.status(500).json({message: err})  }
 
