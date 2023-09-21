@@ -1,0 +1,48 @@
+<%- include("TOP_TRMP.ejs") %>
+<main>
+    <h1 id="">
+        Categories
+    </h1>
+    <!--    <input type = "search" placeholder="SEARCH..." id = "filterField" oninput="CreateTable();">-->
+    <!--    <form action="/Categories/AddCat", method="post"></form>-->
+    <!--<table id="table">-->
+    <!--    <thead>-->
+    <!--    <tr>-->
+    <!--        <th>Name</th>-->
+    <!--        <th>Phone</th>-->
+    <!--        <th>Pob</th>-->
+    <!--        <th></th>-->
+    <!--    </tr>-->
+    <!--    </thead>-->
+    <!--    <tbody id="mainTable"></tbody>-->
+    <!--</table>-->
+    <!--    -->
+
+    <div id="AddForm">
+        <input type="text" name="name"  id="name"  placeholder="name" />
+        <input type="text" name="phone" id="phone" placeholder="phone" />
+        <input type="text" name="pob"   id="pob"   placeholder="pob" />
+        <button onclick="addNewLine();" >send</button>
+    </div>
+    <br/>
+    <input type="search" id="filterField"  placeholder="Search..." oninput="CreateTable()">
+    <hr/>
+    <button onclick="getList()">fetch</button>
+    <hr/>
+    <button onclick="deleteLine()">delete</button>
+    <hr/>
+    <button onclick="editLine()">Edit</button>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Pob</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="mainTable">  </tbody>
+    </table>
+    <script src="/Cat_crud.js"></script>
+</main>
+<%- include("Bottom_TRMP.ejs") %>
