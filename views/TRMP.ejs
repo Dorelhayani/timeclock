@@ -1,18 +1,19 @@
 <%- include("TOP.ejs") %>
 <main>
     <h1 id="employees">
-        Employees
+        Time Report
     </h1>
 
     <div id="AddForm">
         <input type="text" name="name"  id="name"  placeholder="name"/>
         <button id="Add" onclick="addNewLine();">Add</button>
-<!--        <input type="text" name="pob"   id="pob"   placeholder="pob" />-->
+        <!--        <input type="text" name="pob"   id="pob"   placeholder="pob" />-->
         <hr/>
     </div>
     <br/>
     <input type="search" id="filterField"  placeholder="Search..." oninput="CreateTable()">
     <hr/>
+    <div id="clock"></div>
     <table id="table">
         <thead>
         <tr>
@@ -21,11 +22,14 @@
             <th>ID</th>
             <th>Name</th>
             <th>Delete</th>
+            <th>Clockin</th>
+            <th>Clockout</th>
+            <th>Date</th>
             <th></th>
         </tr>
         </thead>
-        <tbody id="mainEmployees">  </tbody>
+        <tbody id="mainEmployees"></tbody>
     </table>
-    <script src="/EmployeesJS.js"></script>
+    <script src="/TimeReportJS.js"></script>
 </main>
 <%- include("Bottom.ejs") %>
