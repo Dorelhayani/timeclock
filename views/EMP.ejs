@@ -5,28 +5,29 @@
     </h1>
 
     <div id="AddForm">
-        <input type="text" name="name"  id="name"  placeholder="name" />
+        <input type="text" name="name"  id="name"  placeholder="name"/>
+        <button id="Add" onclick="addNewLine();">Add</button>
 <!--        <input type="text" name="phone" id="phone" placeholder="phone" />-->
 <!--        <input type="text" name="pob"   id="pob"   placeholder="pob" />-->
-        <button>send</button>
+        <hr/>
     </div>
     <br/>
-    <input type="search" id=""  placeholder="Search..." oninput="">
+    <input type="search" id="filterField"  placeholder="Search..." oninput="CreateTable()">
     <hr/>
-    <hr/>
-    <button >delete</button>
-    <hr/>
-    <button >Edit</button>
-    <table>
+<!--    <button >delete</button>-->
+<!--    <button >Edit</button>-->
+    <table id="table">
         <thead>
         <tr>
+            <th>Edit</th>
             <th>ID</th>
             <th>Name</th>
+            <th>Delete</th>
             <th></th>
         </tr>
         </thead>
         <tbody id="mainEmployees">  </tbody>
     </table>
-<!--    <script src="/Cat_crud.js"></script>-->
+    <script src="/EmployeesJS.js"></script>
 </main>
 <%- include("Bottom_E.ejs") %>

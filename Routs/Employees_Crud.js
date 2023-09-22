@@ -7,10 +7,7 @@ module.exports = router;
 // ---------------------------------------------------------------------------------------------------------------------
 // rout to Main Page - " EMP "
 router.get("/",(req, res) => {
-
-    res.render("EMP", {pageTitle:"Employees"});
-
-});
+    res.render("EMP", {pageTitle:"Employees"}); });
 // ---------------------------------------------------------------------------------------------------------------------
 
 // Create Addpoint
@@ -32,10 +29,9 @@ router.get("/List",(req, res) => {
 
 // Update Addpoint
 router.patch("/Update",(req, res) => {
-    let id=req.params.id;
-
+    let id=req.body.row_id;
+    let {Name,Entering, Leaving }=req.body.name;
     let q=`UPDATE \`employees\`  SET \`name\`='${name}' WHERE id=${id} `;
-
     db_pool.query(q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
@@ -43,13 +39,9 @@ router.patch("/Update",(req, res) => {
 
 // Delete Addpoint
 router.delete("/Delete",(req, res) => {
-    let id=req.params.id;
-
+    let id=req.body.id;
     let q=`DELETE FROM \`employees\` WHERE id='${id}' `;
-
     db_pool.query(q, function(err){
-
         if(err){  res.status(500).json({message: err})  }
-
         else {  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
