@@ -8,10 +8,10 @@ router.get("/",(req, res) => {
 // ---------------------------------------------------------------------------------------------------------------------
 // Create Addpoint
 router.post("/Add",(req, res) => {
-    let {id ,Entering}=req.body;
-    let Q = ` INSERT INTO \`timereport\` (Name,Entering) VALUES `;
+    let {id ,Clockin}=req.body;
+    let Q = ` INSERT INTO \`timereport\` (Name,Clockin) VALUES `;
     Q += `((SELECT Name FROM employees WHERE id = ${id}),`;
-    Q += `'${Entering}')`;
+    Q += `'${Clockin}')`;
 
     db_pool.query(Q, function(err){
         if (err){
@@ -21,25 +21,25 @@ router.post("/Add",(req, res) => {
 // ---------------------------------------------------------------------------------------------------------------------
 // Read Addpoint
 router.get("/List",(req, res) => {
-    let Q="SELECT * FROM ` timereport` ";
+    let Q="SELECT * FROM `timereport` ";
     db_pool.query(Q, function(err, rows){
         if(err)  {  res.status(500).json({message: err})  }
         else {  res.status(200).json(rows );  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
-// Update Entering Addpoint
+// Update Clockin Addpoint
 router.patch("/Clockin",(req, res) => {
     let id=req.body.id;
-    let Entering=req.body.Entering;
-    let Q =`UPDATE \`timereport\`  SET \`Entering\`='${Entering}' WHERE id=${id} `;
+    let Clockin=req.body.Clockin;
+    let Q =`UPDATE \`timereport\`  SET \`Clockin\`='${Clockin}' WHERE id=${id} `;
     db_pool.query(Q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
-// Update Leaving Addpoint
+// Update Clockout Addpoint
 router.patch("/Clockout",(req, res) => {
     let id=req.body.id;
-    let Leaving=req.body.Leaving;
-    let Q =`UPDATE \`timereport\`  SET \`Leaving\`='${Leaving}' WHERE id=${id} `;
+    let Clockout=req.body.Clockout;
+    let Q =`UPDATE \`timereport\`  SET \`Clockout\`='${Clockout}' WHERE id=${id} `;
     db_pool.query(Q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });

@@ -11,10 +11,10 @@ router.get("/",(req, res) => {
 // Create Addpoint
 router.post("/Add",(req, res) => {
     let name=req.body.name;
-    let q=`INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')` ;
-    db_pool.query(q, function(err){
+    let Q=`INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')` ;
+    db_pool.query(Q, function(err){
         if(err){  res.status(500).json({message: err})  }
-        else{  res.status(200).json({message: "OK"});  }    });    });
+        else{  res.status(200).json({message: "OK"});  }    });  });
 // ---------------------------------------------------------------------------------------------------------------------
 // Read Addpoint
 router.get("/List",(req, res) => {
@@ -25,17 +25,17 @@ router.get("/List",(req, res) => {
 // ---------------------------------------------------------------------------------------------------------------------
 // Update Addpoint
 router.patch("/Update",(req, res) => {
-    let id=req.body.id;
+    let id=req.body.employeeID;
     let name=req.body.name;
-    let q=`UPDATE \`employees\`  SET \`name\`='${name}' WHERE id=${id} `;
+    let q=`UPDATE \`employees\`  SET \`name\`='${name}' WHERE employeeID=${id} `;
     db_pool.query(q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
 // Delete Addpoint
 router.delete("/Delete",(req, res) => {
-    let id=req.body.id;
-    let q=`DELETE FROM \`employees\` WHERE id='${id}' `;
+    let id=req.body.employeeID;
+    let q=`DELETE FROM \`employees\` WHERE employeeID='${id}' `;
     db_pool.query(q, function(err){
         if(err){  res.status(500).json({message: err})  }
         else {  res.status(200).json({message: "OK"});  }    });    });

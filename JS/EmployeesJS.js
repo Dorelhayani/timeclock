@@ -16,11 +16,10 @@ function CreateTable(){
     let str="";
     for(let line of data){
         str+="<tr>";
-        str+=`<td><input type="text" name="edit" id="edit-${line.id}" placeholder="enter a name"></td>`;
-        str+=`<td><button onclick="editLine(${line.id});">edit</button></td>`;
-        str+="<td>"+line.id+"</td>";
+        str+=`<td><input type="text" name="edit" id="edit-${line.employeeID}" placeholder="enter a name"> <button onclick="editLine(${line.employeeID});">edit</button></td>`;
+        str+="<td>"+line.employeeID+"</td>";
         str+="<td>"+line.Name+"</td>";
-        str+=`<td><button onclick="deleteLine(${line.id});">delete</button></td>`;
+        str+=`<td><button onclick="deleteLine(${line.employeeID});">delete</button></td>`;
         str+="</tr>";
     }
     document.getElementById("mainEmployees").innerHTML=str; }
@@ -37,7 +36,7 @@ async function getList() {
 async function editLine(id) {
     let objToServer={};
     let edit = document.getElementById(`edit-${id}`).value;
-    objToServer.id=id;
+    objToServer.employeeID=id;
     objToServer.name=edit;
     let response = await fetch('/employees/Update', {
             method: 'PATCH',
@@ -51,7 +50,7 @@ getList();
 // Delete
 async function deleteLine(id) {
     let objToServer={};
-    objToServer.id=id;
+    objToServer.employeeID=id;
     let response = await fetch('/employees/Delete', {
             method: 'DELETE',
             headers: {

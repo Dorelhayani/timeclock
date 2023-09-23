@@ -16,16 +16,17 @@ function CreateTable(){
     let str="";
     for(let line of data){
         str+="<tr>";
-        str+=`<td><input type="text" name="edit" id="edit-${line.id}" placeholder="enter a name"></td>`;
-        str+=`<td><button onclick="editLine(${line.id});">edit</button></td>`;
+        // str+=`<td><input type="text" name="edit" id="edit-${line.id}" placeholder="enter a name"></td>`;
+        // str+=`<td><button onclick="editLine(${line.id});">edit</button></td>`;
         str+="<td>"+line.id+"</td>";
-        str+="<td>"+line.name+"</td>";
-        // str+="<td>"+line.Clockin+"</td>";
-        // str+="<td>"+line.Clockout+"</td>";
-        str+=`<td><button onclick="deleteLine(${line.id});">delete</button></td>`;
+        str+="<td>"+line.Name+"</td>";
+        str+="<td>"+line.Clockin+"</td>";
+        str+="<td>"+line.Clockout+"</td>";
+        // str+=`<td><button onclick="deleteLine(${line.id});">delete</button></td>`;
         str+="</tr>";
     }
-    document.getElementById("mainEmployees").innerHTML=str; }
+    document.getElementById("mainTimeReport").innerHTML=str; }
+getList();
 // ---------------------------------------------------------------------------------------------------------------------
 // Read
 async function getList() {
@@ -34,43 +35,42 @@ async function getList() {
     console.log("data=",data);
     raw_data = data;
     CreateTable(); }
-getList();
 // ---------------------------------------------------------------------------------------------------------------------
 // Update
-async function editLine(id) {
-    let objToServer={};
-    let edit = document.getElementById(`edit-${id}`).value;
-    objToServer.id=id;
-    objToServer.name=edit;
-    let response = await fetch('/timereport/Update', {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'},
-        body: JSON.stringify(objToServer) } );
-    getList(); }
-
-getList();
+// async function editLine(id) {
+//     let objToServer={};
+//     let edit = document.getElementById(`edit-${id}`).value;
+//     objToServer.id=id;
+//     objToServer.name=edit;
+//     let response = await fetch('/timereport/Clockin', {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'},
+//         body: JSON.stringify(objToServer) } );
+//     getList(); }
+//
+// getList();
 // ---------------------------------------------------------------------------------------------------------------------
 // Delete
-async function deleteLine(id) {
-    let objToServer={};
-    objToServer.id=id;
-    let response = await fetch('/timereport/Delete', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json' },
-        body: JSON.stringify(objToServer) } );
-    getList(); }
+// async function deleteLine(id) {
+//     let objToServer={};
+//     objToServer.id=id;
+//     let response = await fetch('/timereport/Delete', {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json' },
+//         body: JSON.stringify(objToServer) } );
+//     getList(); }
 // ---------------------------------------------------------------------------------------------------------------------
 // Add
-async function addNewLine() {
-    let name=document.getElementById("name").value;
-    let response = await fetch('/timereport/Add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' },
-        body: JSON.stringify({name:name}) } );
-    getList(); }
+// async function addNewLine() {
+//     let name=document.getElementById("name").value;
+//     let response = await fetch('/timereport/Add', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json' },
+//         body: JSON.stringify({name:name}) } );
+//     getList(); }
 // ---------------------------------------------------------------------------------------------------------------------
 // Current Time
 function updateClock() {
