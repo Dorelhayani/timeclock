@@ -27,8 +27,8 @@ router.get("/List",(req, res) => {
 router.patch("/Update",(req, res) => {
     let id=req.body.employeeID;
     let name=req.body.name;
-    let q=`UPDATE \`employees\`  SET \`name\`='${name}' WHERE employeeID=${id} `;
-    db_pool.query(q, function(err){
+    let Q =`UPDATE \`employees\`  SET \`name\`='${name}' WHERE employeeID=${id} `;
+    db_pool.query(Q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------

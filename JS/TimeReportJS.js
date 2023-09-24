@@ -18,7 +18,7 @@ function CreateTable(){
         str+="<tr>";
         // str+=`<td><input type="text" name="edit" id="edit-${line.id}" placeholder="enter a name"></td>`;
         // str+=`<td><button onclick="editLine(${line.id});">edit</button></td>`;
-        str+="<td>"+line.id+"</td>";
+        str+="<td>"+line.employeeID+"</td>";
         str+="<td>"+line.Name+"</td>";
         str+="<td>"+line.Clockin+"</td>";
         str+="<td>"+line.Clockout+"</td>";
@@ -26,7 +26,6 @@ function CreateTable(){
         str+="</tr>";
     }
     document.getElementById("mainTimeReport").innerHTML=str; }
-getList();
 // ---------------------------------------------------------------------------------------------------------------------
 // Read
 async function getList() {
@@ -37,19 +36,19 @@ async function getList() {
     CreateTable(); }
 // ---------------------------------------------------------------------------------------------------------------------
 // Update
-// async function editLine(id) {
-//     let objToServer={};
-//     let edit = document.getElementById(`edit-${id}`).value;
-//     objToServer.id=id;
-//     objToServer.name=edit;
-//     let response = await fetch('/timereport/Clockin', {
-//         method: 'PATCH',
-//         headers: {
-//             'Content-Type': 'application/json'},
-//         body: JSON.stringify(objToServer) } );
-//     getList(); }
-//
-// getList();
+async function editLine(id) {
+    let objToServer={};
+    let edit = document.getElementById(`edit-${id}`).value;
+    objToServer.employeeID=id;
+    objToServer.Name=edit;
+    let response = await fetch('/timereport/Clockin', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'},
+        body: JSON.stringify(objToServer) } );
+    getList(); }
+
+getList();
 // ---------------------------------------------------------------------------------------------------------------------
 // Delete
 // async function deleteLine(id) {
