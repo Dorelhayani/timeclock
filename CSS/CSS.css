@@ -42,10 +42,11 @@ body{
     margin-top: 1%;
     margin-left: 41.5%;
     font-size: large;
-    font-family: Aharoni, serif;
-}
+    font-family: Aharoni, serif;}
 
 #clockout{
     font-size: large;
-    font-family: Aharoni, serif;
-}
+    font-family: Aharoni, serif; }
+
+#select{
+    margin-left: 41.5%; }

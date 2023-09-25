@@ -4,43 +4,33 @@ module.exports = router;
 // ---------------------------------------------------------------------------------------------------------------------
 // rout to Main Page - " EMP "
 router.get("/",(req, res) => {
-    res.render("TRMP", {pageTitle:"Time Report"});});
+    res.render("MainEmployees", {pageTitle:"Time Report"});});
 // ---------------------------------------------------------------------------------------------------------------------
 // Create Addpoint
 // router.post("/Add",(req, res) => {
-//     let {id ,Clock}=req.body;
-//     // let currentTime = new Date().toISOString();
+//     let {id ,Clockin}=req.body;
 //     let Q = ` INSERT INTO \`timereport\` (Name,Clockin) VALUES `;
 //     Q += `((SELECT Name FROM employees WHERE employeeID = ${id}),`;
-//     Q += `'${Clock}')`;
+//     Q += `'${Clockin}')`;
 //
 //     db_pool.query(Q, function(err){
 //         if (err){
 //             res.status(500).json({message: err}); }
 //         else{
 //             res.status(200).json({message: "good"});}  })   });
-router.post("/Add",(req, res) => {
-    let id=req.body.employeeID;
-    let clkin=req.body.Clockin;
-    let Q = `UPDATE \`timereport\` SET \`Clockin\` = '${clkin}' WHERE employeeID = ${id}`;
-
-    db_pool.query(Q, function(err){
-        if(err){ res.status(500).json({message: err}) }
-        else{  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
 // Read Addpoint
-router.get("/List",(req, res) => {
-    // let Q="SELECT * FROM `timereport` ";
-    let Q=
-    `
-        SELECT e.employeeID, e.Name, t.Clockin, t.Clockout
-        FROM employees e
-        LEFT JOIN \`timereport\` t ON e.employeeID = t.employeeID 
-        WHERE t.Clockin IS NOT NULL AND t.Clockout IS NOT NULL
-    `
-    db_pool.query(Q, function(err, rows){
-        if(err)  {  res.status(500).json({message: err})  }
-        else {  res.status(200).json(rows );  }    });    });
+// router.get("/List",(req, res) => {
+//     let Q=
+//         `
+//         SELECT e.employeeID, e.Name, t.Clockin, t.Clockout
+//         FROM employees e
+//         LEFT JOIN \`timereport\` t ON e.employeeID = t.employeeID
+//         WHERE t.Clockin IS NOT NULL AND t.Clockout IS NOT NULL
+//     `
+//     db_pool.query(Q, function(err, rows){
+//         if(err)  {  res.status(500).json({message: err})  }
+//         else {  res.status(200).json(rows );  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------
 // Update Clockin Addpoint
 router.patch("/Clockin",(req, res) => {
@@ -60,12 +50,4 @@ router.patch("/Clockout",(req, res) => {
     db_pool.query(Q, function(err){
         if(err){ res.status(500).json({message: err}) }
         else{  res.status(200).json({message: "OK"});  }    });    });
-// ---------------------------------------------------------------------------------------------------------------------
-// Delete Addpoint
-// router.delete("/Delete",(req, res) => {
-//     let id=req.body.employeeID ;
-//     let q=`DELETE FROM \`timereport\` WHERE id='${id}' `;
-//     db_pool.query(q, function(err){
-//         if(err){  res.status(500).json({message: err})  }
-//         else {  res.status(200).json({message: "OK"});  }    });    });
 // ---------------------------------------------------------------------------------------------------------------------

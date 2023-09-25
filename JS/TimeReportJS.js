@@ -22,8 +22,6 @@ function CreateTable(){
         str+="<td>"+line.Name+"</td>";
         str+="<td>"+line.Clockin+"</td>";
         str+="<td>"+line.Clockout+"</td>";
-
-
         // str+=`<td><button onclick="deleteLine(${line.id});">delete</button></td>`;
         str+="</tr>";
     }

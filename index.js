@@ -27,8 +27,8 @@ const Time_rtr=require('./Routs/Timereport _Crud');
 app.use('/timereport', Time_rtr);
 // ---------------------------------------------------------------------------------------------------------------------
 // Employees Main
-// const MainPage_rtr=require('./Routs/EmployeeMain');
-// app.use(EmployeeMain , MainPage_rtr);
+const MainPage_rtr=require('./Routs/MainEmployees_CRUD');
+app.use('/MainEmployees' , MainPage_rtr);
 // ---------------------------------------------------------------------------------------------------------------------
 // port listening
 app.listen(port, () => { console.log(`Now listening on port http://localhost:${port}`); });
