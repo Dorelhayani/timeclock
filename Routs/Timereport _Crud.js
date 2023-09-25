@@ -24,9 +24,9 @@ router.get("/List",(req, res) => {
     // let Q="SELECT * FROM `timereport` ";
     let Q=
     `
-        SELECT e.employeeID, e.Name
+        SELECT e.employeeID, e.Name, t.Clockin, t.Clockout
         FROM employees e
-        LEFT JOIN \`timereport\` t ON e.employeeID = t.employeeID 
+        LEFT JOIN \`timereport\` t ON e.employeeID = t.employeeID
     `
     db_pool.query(Q, function(err, rows){
         if(err)  {  res.status(500).json({message: err})  }

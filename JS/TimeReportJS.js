@@ -22,6 +22,8 @@ function CreateTable(){
         str+="<td>"+line.Name+"</td>";
         str+="<td>"+line.Clockin+"</td>";
         str+="<td>"+line.Clockout+"</td>";
+
+
         // str+=`<td><button onclick="deleteLine(${line.id});">delete</button></td>`;
         str+="</tr>";
     }
@@ -36,17 +38,17 @@ async function getList() {
     CreateTable(); }
 // ---------------------------------------------------------------------------------------------------------------------
 // Update
-async function editLine(id) {
-    let objToServer={};
-    let edit = document.getElementById(`edit-${id}`).value;
-    objToServer.employeeID=id;
-    objToServer.Name=edit;
-    let response = await fetch('/timereport/Clockin', {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'},
-        body: JSON.stringify(objToServer) } );
-    getList(); }
+// async function editLine(id) {
+//     let objToServer={};
+//     let edit = document.getElementById(`edit-${id}`).value;
+//     objToServer.employeeID=id;
+//     objToServer.Name=edit;
+//     let response = await fetch('/timereport/Clockin', {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'},
+//         body: JSON.stringify(objToServer) } );
+//     getList(); }
 
 getList();
 // ---------------------------------------------------------------------------------------------------------------------
