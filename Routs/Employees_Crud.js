@@ -9,12 +9,12 @@ router.get("/",(req, res) => {
     res.render("EMP", {pageTitle:"Employees"});});
 // ---------------------------------------------------------------------------------------------------------------------
 // Create Addpoint
-// router.post("/Add",(req, res) => {
-//     let name=req.body.name;
-//     let Q=`INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')` ;
-//     db_pool.query(Q, function(err){
-//         if(err){  res.status(500).json({message: err})  }
-//         else{  res.status(200).json({message: "OK"});  }    });  });
+router.post("/Add",(req, res) => {
+    let name=req.body.name;
+    let Q=`INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')` ;
+    db_pool.query(Q, function(err){
+        if(err){  res.status(500).json({message: err})  }
+        else{  res.status(200).json({message: "OK"});  }    });  });
 // ---------------------------------------------------------------------------------------------------------------------
 // Read Addpoint
 router.get("/List",(req, res) => {
