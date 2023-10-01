@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router()
 module.exports = router;
 // ---------------------------------------------------------------------------------------------------------------------
-// rout to Main Page - " EMP "
+// rout to Main Page - " EMP = employees"
 router.get("/",(req, res) => {
     res.render("EMP", {pageTitle:"Employees"});});
 // ---------------------------------------------------------------------------------------------------------------------

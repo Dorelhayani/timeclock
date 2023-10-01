@@ -29,13 +29,19 @@ body{
     /*margin-top: 10%;*/
     font-family: Aharoni, serif;}
 
+#select{
+    position: relative;
+    left: 40%;
+}
+
+
 #filterField{
     margin-left: 41%;
     font-family: Aharoni, serif;}
 
 #clock{
     margin-left: 41%;
-    font-size: xx-large;
+    font-size: xxx-large;
     font-family: Aharoni, serif;}
 
 #clockin{
@@ -48,5 +54,5 @@ body{
     font-size: large;
     font-family: Aharoni, serif; }
 
-#select{
+#selectemployee{
     margin-left: 41.5%; }

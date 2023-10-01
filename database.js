@@ -1,7 +1,5 @@
-// https://www.npmjs.com/package/mysql2
 const mysql = require('mysql2');
 
-//require("./gen_params");
 let HOST     =require("./gen-params").HOST     ;
 let USER     =require("./gen-params").USER     ;
 let PASSWORD =require("./gen-params").PASSWORD ;

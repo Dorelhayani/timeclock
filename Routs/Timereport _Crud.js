@@ -2,9 +2,13 @@ const express = require('express');
 const router = express.Router()
 module.exports = router;
 // ---------------------------------------------------------------------------------------------------------------------
-// rout to Main Page - " EMP "
+// rout to Main Page - " TRMP = timereprt"
 router.get("/",(req, res) => {
     res.render("TRMP", {pageTitle:"Time Report"});});
+// ---------------------------------------------------------------------------------------------------------------------
+// rout to Main Employees Page
+router.get("/MainEmployees",(req, res) => {
+    res.render("MainEmployees", {pageTitle:"Main Employees Page"});});
 // ---------------------------------------------------------------------------------------------------------------------
 // Create Addpoint
 router.post("/Add",(req, res) => {

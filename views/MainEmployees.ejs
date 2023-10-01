@@ -3,19 +3,14 @@
     <h1 id="employees">
         Main Employees
     </h1>
+    <div id="clock"></div>
     <br/>
-    <select id="select">
-        <option value="">Select Employee</option>
-    </select>
     <hr/>
-
-
-
-    <button id="clockin" onclick="addClockin()">Clock in</button>
-    <button id="clockout" onclick="">Clock out</button>
-
-
-
+        <select  id="select">
+            <option id="options">Select Employee</option>
+        </select>
+        <button id="clockin" onclick="Clockin()">Clock in</button>
+        <button id="clockout" onclick="Clockout()">Clock out</button>
     <script src="/MianEmployeesJS.js"></script>
 </main>
 <%- include("Bottom.ejs") %>
